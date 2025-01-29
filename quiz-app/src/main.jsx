@@ -5,12 +5,14 @@ import QuizContexProvider from './Context/QuizContextProvider.jsx'
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider, Outlet } from 'react-router-dom'
 import QuizFormPage from './Components/Pages/QuizFormPage.jsx'
 import MainQuizPage from './Components/Pages/MainQuizPage.jsx'
+import ResultPage from './Components/ResultPage.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Outlet />}>
       <Route index element={<QuizFormPage />} />
       <Route path="quiz" element={<MainQuizPage />} />
+      <Route path='quiz-result/:result' element={<ResultPage/>}/>
     </Route>
   )
 );

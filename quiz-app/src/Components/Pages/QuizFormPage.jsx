@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useContext } from "react";
-import QuizContexProvider from "../../Context/QuizContextProvider";
 import QuizContex from "../../Context/QuizContext";
 import { Route, useNavigate } from "react-router-dom";
 
@@ -10,7 +9,7 @@ function QuizFormPage() {
   const [difficultyQuestion,setDifficultyQuestion] = useState('')
   const [typeQuestion,setTypeQuestion] = useState('') 
 
-  const {setQuizConfig} = useContext(QuizContex)
+  const {fetchQuestion,setLoading} = useContext(QuizContex)
   const navigate = useNavigate()
 
   const categories = [
@@ -41,17 +40,17 @@ function QuizFormPage() {
     { value: "32", text: "Entertainment: Cartoon & Animations" },
   ];
 
+
   const handleForm = (e) => {
     e.preventDefault();
-    const quizConfig = {
-      numberOfQuestion: noOfQuestion,
-      categoryOfQuestion: categoryQuestion,
-      difficultyOfQuestion: difficultyQuestion,
-      typeOfQuestion: typeQuestion,
-    };
-    setQuizConfig(quizConfig);
-    navigate('/quiz'); // Update to absolute path
+    fetchQuestion(noOfQuestion,categoryQuestion,difficultyQuestion,typeQuestion)
+    navigate('/quiz'); 
   };
+
+  useEffect(()=>{
+    setLoading(true)
+    localStorage.setItem('quizes',JSON.stringify([]))
+  },[])
   
 
   return (
@@ -126,10 +125,12 @@ function QuizFormPage() {
           <option value="multiple">Multiple Choice</option>
           <option value="boolean">True / False</option>
         </select>
-
-        <button className="px-6 py-2 text-slate-100 bg-blue-600 mx-auto">
+        
+        <div className="w-full flex justify-center mt-5">
+        <button className="px-6 py-2 text-slate-100 bg-blue-600 rounded-lg hover:bg-blue-500 cursor-pointer">
           Start Quiz
         </button>
+        </div>
       </form>
     </div>
   );
