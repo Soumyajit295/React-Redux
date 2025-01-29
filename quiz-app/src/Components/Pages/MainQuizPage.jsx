@@ -2,7 +2,7 @@ import React from 'react'
 
 function MainQuizPage() {
   return (
-    <div>MainQuizPage</div>
+    <div className='text-slate-200 text-center'>MainQuizPage</div>
   )
 }
 

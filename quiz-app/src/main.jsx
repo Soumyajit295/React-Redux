@@ -8,12 +8,13 @@ import MainQuizPage from './Components/Pages/MainQuizPage.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path='/' element={<Outlet />}>
+    <Route path="/" element={<Outlet />}>
       <Route index element={<QuizFormPage />} />
-      <Route path='quiz' element={<MainQuizPage />} />
+      <Route path="quiz" element={<MainQuizPage />} />
     </Route>
   )
-)
+);
+
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
