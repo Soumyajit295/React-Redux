@@ -45,7 +45,11 @@ export const fetchCoins = createAsyncThunk(
 const CryptoSlice = createSlice({
   name: "crypto",
   initialState,
-  reducers: {},
+  reducers: {
+    changeCurrency : (state,action)=>{
+      state.currency = action.payload
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchCoins.pending, (state) => {
@@ -61,5 +65,7 @@ const CryptoSlice = createSlice({
       });
   },
 });
+
+export const {changeCurrency} = CryptoSlice.actions
 
 export default CryptoSlice.reducer;

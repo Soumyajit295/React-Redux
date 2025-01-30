@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import hero from "../../assets/Hero.png";
 import ShowCase from "../UtilityComponents/ShowCase";
+import  {useDispatch, useSelector } from 'react-redux'
+import {fetchCoins} from '../../Redux/Slices/CryptoSlice'
 
 function Home() {
+  const {currency} = useSelector(state=>state.crypto)
+  const dispatch = useDispatch()
+
+  useEffect(()=>{
+    dispatch(fetchCoins(currency))
+  },[])
+
   return (
     <div className="w-full min-h-screen bg-gradient-to-r from-gray-900 to-black">
         <div className="flex flex-col sm:flex-row">
