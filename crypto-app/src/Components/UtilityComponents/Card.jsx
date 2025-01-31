@@ -1,8 +1,11 @@
 import React from "react";
-
+import {useNavigate} from 'react-router-dom'
 function Card({ crypto, currentCurrency }) {
+  const navigate = useNavigate()
   return (
-    <div key={crypto.id} className="p-4 bg-gray-800 rounded-lg w-60 flex flex-col justify-between min-h-full hover:bg-gray-900 cursor-pointer">
+    <div
+    onClick={()=>navigate(`/crypto/${crypto.id}`)}
+    key={crypto.id} className="p-4 bg-gray-800 rounded-lg w-60 flex flex-col justify-between min-h-full hover:bg-gray-900 cursor-pointer">
       <div className="w-full flex items-center p-2 gap-3">
         <img className="w-14 h-14 rounded-full" src={crypto.image} alt="image" />
         <h2 className="text-xl font-bold truncate">{crypto.name}</h2>

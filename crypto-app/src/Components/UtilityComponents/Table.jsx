@@ -1,8 +1,10 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function Table({ cryptos,currentCurrency }) {
 
-  console.log(cryptos)
+  const navigate = useNavigate()
+
   return (
     <table className="w-full table-auto overflow-x-auto text-left text-gray-300">
       <thead className="bg-gray-800">
@@ -17,7 +19,9 @@ function Table({ cryptos,currentCurrency }) {
       </thead>
       <tbody>
         {cryptos.map((crypto, index) => (
-          <tr key={crypto.id} className="border-b border-gray-700">
+          <tr 
+          onClick={()=>navigate(`/crypto/${crypto.id}`)}
+          key={crypto.id} className="border-b border-gray-700 cursor-pointer">
             
             <td className="px-4 py-2">{crypto.name}</td>
             <td className="px-4 py-2"><img className="w-5" src={crypto.image} alt="" /></td>
