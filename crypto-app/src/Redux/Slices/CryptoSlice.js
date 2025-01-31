@@ -58,7 +58,8 @@ const CryptoSlice = createSlice({
       .addCase(fetchCoins.fulfilled, (state, action) => {
         (state.loading = false),
           (state.error = null),
-          (state.showcaseCrypto = action.payload.slice(0, 4));
+          (state.showcaseCrypto = action.payload.slice(0, 4),
+          (state.cryptos = action.payload));
       })
       .addCase(fetchCoins.rejected, (state, action) => {
         (state.loading = false), (state.error = action.payload);

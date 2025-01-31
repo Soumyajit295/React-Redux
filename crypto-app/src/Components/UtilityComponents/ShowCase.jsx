@@ -22,7 +22,7 @@ function ShowCase() {
 
   useEffect(() => {
     dispatch(fetchCoins(currentCurrency));
-  }, [currentCurrency]);
+  }, [currency,dispatch,currentCurrency]);
 
   return (
     <div className="w-full p-2">
