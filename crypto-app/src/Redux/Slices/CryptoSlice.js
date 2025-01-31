@@ -1,8 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 const apikey = import.meta.env.VITE_CRYPTO_KEY;
 
-console.log("APi key : ", apikey);
-
 const initialState = {
   cryptos: [],
   showcaseCrypto: [],
